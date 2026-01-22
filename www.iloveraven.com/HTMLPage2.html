@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>through My Eyes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("images/baby2.png") no-repeat center center;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Courier New', monospace;
+            position: relative; /* needed for the back button */
+        }
+
+        /* Paper container */
+        .letter {
+            background: rgba(255, 255, 240, 0.95); /* parchment color */
+            padding: 50px 60px;
+            max-width: 900px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            color: #222;
+            line-height: 1.8;
+            font-size: 18px;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInLetter 1s ease forwards;
+            text-align: center; /* CENTER ALL TEXT */
+        }
+
+            /* Heading inside letter */
+            .letter h1 {
+                text-align: center;
+                font-family: 'Courier New', monospace;
+                margin-bottom: 30px;
+                color: #b22222; /* deep romantic red */
+                text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+                opacity: 0;
+                animation: fadeInHeading 1s ease forwards;
+            }
+
+            /* Smooth fade-in for paragraph */
+            .letter p {
+                white-space: pre-wrap;
+                overflow: hidden;
+                opacity: 0;
+                animation: fadeInText 1s ease forwards 0.5s; /* delay to start after heading */
+            }
+
+        /* Fade-in animations */
+        @keyframes fadeInLetter {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInHeading {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInText {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Back button styling */
+        .back-button {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background-color: rgba(178, 34, 34, 0.8); /* semi-transparent red */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+            .back-button:hover {
+                transform: scale(1.05);
+                background-color: rgba(178, 34, 34, 1);
+            }
+    </style>
+</head>
+<body>
+
+    <!-- Background Audio -->
+    <audio id="bgAudio" src="soundtrack/Aphrodite.mp3" preload="auto" loop></audio>
+
+    <div class="letter" onclick="playAudio()">
+        <h1>THROUGH MY EYES</h1>
+        <p>bebi, if only you can see yourself through my eyes, you'd be speechless by how mesmerizing you look. the beauty that you have inside is as beautiful as you are outside. i love every part of you. your flaws and mistake makes me love you more. the more that i look at you, the more i deeply fall in love. as if it's my first time seeing you and falling in love over and over again. your eyes, nose, smile, and laughter. they are the ones that got me. you are so cute i can hug you every day, week, months, or even years. i really want to spend my whole life with you. through everything, i want to be with you 'till my very last breath. i love kissing and hugging you. your body is so soft as if it's made out of light feathers. you're the woman of my dreams, the blessing of my every prayers, the woman God have given me. 
+         
+ i love you forever, bebang qt <3
+        </p>
+    </div>
+
+    <!-- Back Button -->
+    <button class="back-button" onclick="goBack()">Back</button>
+
+    <script>
+        const audio = document.getElementById("bgAudio");
+
+        // Function to play audio on click
+        function playAudio() {
+            if (audio.paused) {
+                fadeInAudio(audio, 0.05); // fade-in when clicked
+            }
+        }
+
+        // Auto-play with fade-in if allowed
+        window.addEventListener('load', () => {
+            audio.volume = 0;
+            audio.play().then(() => {
+                fadeInAudio(audio, 0.05); // fade-in effect
+            }).catch(() => {
+                console.log("Auto-play blocked. Click to play.");
+            });
+        });
+
+        // Fade-in function
+        function fadeInAudio(audioElement, step = 0.05) {
+            let vol = 0;
+            audioElement.volume = vol;
+            const fade = setInterval(() => {
+                vol += step;
+                if (vol >= 1) {
+                    vol = 1;
+                    clearInterval(fade);
+                }
+                audioElement.volume = vol;
+            }, 200); // increase volume every 200ms
+        }
+
+        // Back button function
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+
+</body>
+</html>

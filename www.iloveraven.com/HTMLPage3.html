@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>my lover for eternity</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("images/upd.png") no-repeat center center;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Courier New', monospace;
+            position: relative; /* needed for the back button */
+        }
+
+        /* Paper container */
+        .letter {
+            background: rgba(255, 255, 240, 0.95); /* parchment color */
+            padding: 50px 60px;
+            max-width: 900px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            color: #222;
+            line-height: 1.8;
+            font-size: 18px;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInLetter 1s ease forwards;
+            text-align: center; /* CENTER ALL TEXT */
+        }
+
+            /* Heading inside letter */
+            .letter h1 {
+                text-align: center;
+                font-family: 'Courier New', monospace;
+                margin-bottom: 30px;
+                color: #b22222; /* deep romantic red */
+                text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+                opacity: 0;
+                animation: fadeInHeading 1s ease forwards;
+            }
+
+            /* Smooth fade-in for paragraph */
+            .letter p {
+                white-space: pre-wrap;
+                overflow: hidden;
+                opacity: 0;
+                animation: fadeInText 1s ease forwards 0.5s; /* delay to start after heading */
+            }
+
+        /* Fade-in animations */
+        @keyframes fadeInLetter {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInHeading {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInText {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Back button styling */
+        .back-button {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background-color: rgba(178, 34, 34, 0.8); /* semi-transparent red */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+            .back-button:hover {
+                transform: scale(1.05);
+                background-color: rgba(178, 34, 34, 1);
+            }
+    </style>
+</head>
+<body>
+
+    <!-- Background Audio -->
+    <audio id="bgAudio" src="soundtrack/Euphoria.mp3" preload="auto" loop></audio>
+
+    <div class="letter" onclick="playAudio()">
+        <h1>MY LOVER FOR ETERNITY</h1>
+        <p>having you in my life is the greatest blessing that i could ever have. i would always choose you in every lifetime to be my girlfriend, baby, my wife. we have so many similarities, bebi. and i find it funny because who would ever thought that you are my soulmate? my soon to be wife? because the grade-11 us would not believe what we have now. God really works in a great and mysterious ways. there's a line in this song saying "falling in-love is not what i had in mind". we both came in each other's life when we're not looking for love. but yet, love came between us. and now, you're my everything, bebi. this song reminds me of you, bebi. the line "heaven above was beautiful and kind, sending an angel beautiful and divine." because, you are heaven sent for me. you are everything i've asked for. i am so glad that i am with you. i love you forever, bebang!! ^-^
+        </p>
+    </div>
+
+    <!-- Back Button -->
+    <button class="back-button" onclick="goBack()">Back</button>
+
+    <script>
+        const audio = document.getElementById("bgAudio");
+
+        // Function to play audio on click
+        function playAudio() {
+            if (audio.paused) {
+                fadeInAudio(audio, 0.05); // fade-in when clicked
+            }
+        }
+
+        // Auto-play with fade-in if allowed
+        window.addEventListener('load', () => {
+            audio.volume = 0;
+            audio.play().then(() => {
+                fadeInAudio(audio, 0.05); // fade-in effect
+            }).catch(() => {
+                console.log("Auto-play blocked. Click to play.");
+            });
+        });
+
+        // Fade-in function
+        function fadeInAudio(audioElement, step = 0.05) {
+            let vol = 0;
+            audioElement.volume = vol;
+            const fade = setInterval(() => {
+                vol += step;
+                if (vol >= 1) {
+                    vol = 1;
+                    clearInterval(fade);
+                }
+                audioElement.volume = vol;
+            }, 200); // increase volume every 200ms
+        }
+
+        // Back button function
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+
+</body>
+</html>

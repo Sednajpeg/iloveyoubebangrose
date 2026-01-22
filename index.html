@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>I love you, Raven!</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("images/bg.png") no-repeat center center;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            position: relative;
+        }
+
+        h1 {
+            position: absolute;
+            top: 45px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            text-shadow: 2px 4px 4px black;
+            color: lightpink;
+        }
+
+        /* MENU CONTAINER */
+        .menu {
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+            align-items: flex-start; /* align titles on top */
+
+        }
+
+        /* SINGLE ITEM (title + image) */
+        .menu-item {
+            display: flex;
+            flex-direction: column; /* stack title above image */
+            align-items: center; /* center horizontally */
+            
+        }
+
+        /* IMAGE TITLE */
+        .img-title {
+            color: white;
+            font-family: 'Times New Roman', Times, serif;
+            margin-bottom: 10px; /* space between title and image */
+            text-shadow: 1px 2px 2px black;
+            font-size: 16px;
+            text-align: center;
+            width: 170px;
+            line-height: 1.4;
+        }
+
+        /* IMAGES */
+        .menu-item img {
+            width: 170px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            border-radius: 5px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+            /* HOVER EFFECT */
+            .menu-item img:hover {
+                transform: scale(1.1);
+            }
+    </style>
+</head>
+
+<body>
+
+    <h1>I LOVE YOU, RAVEN ROSE!</h1>
+
+    <!-- IMAGES WITH TITLES -->
+    <div class="menu">
+
+        <div class="menu-item">
+            <p class="img-title">through my eyes</p>
+            <a href="HTMLPage2.html">
+                <img src="images/babybus.png" alt="Baby Bus">
+            </a>
+        </div>
+
+        <div class="menu-item">
+            <p class="img-title">my lover for eternity</p>
+            <a href="HTMLPage3.html">
+                <img src="images/museum.png" alt="Museum">
+            </a>
+        </div>
+
+        <div class="menu-item">
+            <p class="img-title">a love that is trying</p>
+            <a href="HTMLPage4.html">
+                <img src="images/shark.png" alt="Shark">
+            </a>
+        </div>
+
+    </div>
+
+</body>
+</html>
